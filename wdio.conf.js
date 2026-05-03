@@ -1,3 +1,4 @@
+const { HtmlReporter } = require('wdio-html-nice-reporter');
 exports.config = {
     //
     // ====================
@@ -84,7 +85,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-     baseUrl: 'https://practicesoftwaretesting.com',
+    baseUrl: 'https://practicesoftwaretesting.com',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -100,7 +101,7 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    // services: [],
+    services: ['devtools'],
     //
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -123,7 +124,18 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec'],
+        reporters: [
+        'spec', // To show results in the console
+        [HtmlReporter, {
+            outputDir: './reports/html-reports/',
+            filename: 'report.html',
+            reportTitle: 'Test Report',
+            showInBrowser: true, // Open the report in browser after test run
+            linkScreenshots: true, // Link screenshots in the report (if any)
+            collapseTests: false  // Expand tests (can be set to `true` if you want them collapsed)
+        }]
+    ],
+
 
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
