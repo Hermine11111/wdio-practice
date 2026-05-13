@@ -45,7 +45,7 @@ exports.config = {
 
     // Global before hook
     before: async () => {
-        const chai = require('chai');
+        const chai = await import('chai');
         global.expect = chai.expect;
     }
 };

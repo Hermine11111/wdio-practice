@@ -9,7 +9,7 @@ on:
 
 jobs:
   cucumber-tests:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
@@ -20,11 +20,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Setup Node.js 24
+      # 2. Setup Node.js LTS
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '24'
+          node-version: '22'
           cache: 'npm'
 
       # 3. Ensure reports folder exists
@@ -33,11 +33,13 @@ jobs:
 
       # 4. Install dependencies
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       # 5. Run Cucumber tests with dynamic tag
       - name: Run Cucumber tests with @${{ matrix.tag }} tag
-        run: TAG=@${{ matrix.tag }} npm run suite:${{ matrix.tag }}
+        run: npm run suite:${{ matrix.tag }}
+        env:
+          TAG: '@${{ matrix.tag }}'
 
       # 6. Upload test reports
       - name: Upload test reports
