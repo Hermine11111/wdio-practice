@@ -38,3 +38,4 @@ Then('the product {string} should be found in the results', async (name) => {
     }
     expect(found).to.be.true;
 });
+
