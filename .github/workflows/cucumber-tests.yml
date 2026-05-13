@@ -16,32 +16,26 @@ jobs:
         tag: [smoke, login, product, cart, search]
 
     steps:
-      # 1. Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Setup Node.js LTS
-      - name: Setup Node.js
+      - name: Setup Node.js 24
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '24'
           cache: 'npm'
 
-      # 3. Ensure reports folder exists
       - name: Ensure reports folder exists
         run: mkdir -p reports
 
-      # 4. Install dependencies
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      # 5. Run Cucumber tests with dynamic tag
       - name: Run Cucumber tests with @${{ matrix.tag }} tag
         run: npm run suite:${{ matrix.tag }}
         env:
           TAG: '@${{ matrix.tag }}'
 
-      # 6. Upload test reports
       - name: Upload test reports
         if: always()
         uses: actions/upload-artifact@v4
