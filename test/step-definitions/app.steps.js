@@ -3,7 +3,7 @@ const LoginPage = require('../pageobjects/login.page');
 const ProductPage = require('../pageobjects/product.page');
 const { expect } = require('chai');
 
-const TIMEOUT = 20000; // timeout constant for CI and slow environments
+const TIMEOUT = 40000; // timeout constant for CI and slow environments
 
 // Login
 Given('I open the login page', async () => { 

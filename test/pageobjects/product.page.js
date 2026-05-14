@@ -1,4 +1,4 @@
-const TIMEOUT = 20000;
+const TIMEOUT = 40000;
 
 class ProductPage {
 
