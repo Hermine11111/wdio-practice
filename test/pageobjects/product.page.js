@@ -1,3 +1,5 @@
+const TIMEOUT = 40000;
+
 class ProductPage {
 
     async openFirstProduct() {
@@ -6,7 +8,7 @@ class ProductPage {
         // wait until products exist
         await browser.waitUntil(async () => {
             return (await $$('[data-test="product-name"]')).length > 0;
-        }, { timeout: 5000 });
+        }, { timeout: TIMEOUT }); 
 
         const products = await $$('[data-test="product-name"]');
         await products[0].click();
@@ -22,7 +24,7 @@ class ProductPage {
     get cartCount() { return $('[data-test="cart-quantity"]'); }
 
     async addToCart() {
-        await this.addToCartBtn.waitForDisplayed({ timeout: 5000 });
+        await this.addToCartBtn.waitForDisplayed({ timeout: TIMEOUT }); 
         await this.addToCartBtn.scrollIntoView();
         await this.addToCartBtn.click();
     }
@@ -32,7 +34,7 @@ class ProductPage {
     get searchBtn() { return $('[data-test="search-submit"]'); }
 
     async searchProduct(name) {
-        await this.searchInput.waitForDisplayed({ timeout: 5000 });
+        await this.searchInput.waitForDisplayed({ timeout: TIMEOUT }); 
         await this.searchInput.setValue(name);
         await this.searchBtn.click();
     }

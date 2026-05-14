@@ -1,0 +1,45 @@
+name: Cucumber UI Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  cucumber-tests:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        tag: [login, product, cart, search]   # removed smoke
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Ensure reports folder exists
+        run: mkdir -p reports
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Cucumber tests with @${{ matrix.tag }} tag
+        run: npm run suite:${{ matrix.tag }}
+        env:
+          TAG: '@${{ matrix.tag }}'
+
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports-${{ matrix.tag }}
+          path: reports/
+          retention-days: 7

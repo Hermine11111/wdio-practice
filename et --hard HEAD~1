@@ -1,0 +1,14 @@
+[33m9c4d47c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfeature/cucumber-setup[m[33m, [m[1;31morigin/feature/cucumber-setup[m[33m)[m Update WDIO config and workflow
+[33mdb52d40[m Integrate Cucumber CI fixes: global timeout, reports folder, workflow updates
+[33m127c06b[m Increase global waitFor timeout for CI stability
+[33mdaed35c[m Fix CI workflow: Node.js 24, npm ci, headless stability
+[33md96dae2[m Fix GitHub Actions WDIO test workflow
+[33maaa47e3[m Fix CI workflow: Node.js 24, dynamic tags, reports
+[33mc8c4d87[m Fix WDIO config: dynamic tags, JUnit reports, CI ready
+[33mcd1beb9[m Integrate Cucumber: add feature files, step definitions, npm scripts, and CI workflow
+[33ma7983b5[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m Merge pull request #2 from Hermine11111/feature/reporters
+[33m556e579[m[33m ([m[1;31morigin/feature/reporters[m[33m, [m[1;32mfeature/reporters[m[33m)[m Integrate spec and HTML reporters, update .gitignore to exclude reports
+[33mb14f1b3[m Merge pull request #1 from Hermine11111/feature/module4-tests
+[33m78c1259[m[33m ([m[1;31morigin/feature/module4-tests[m[33m, [m[1;32mfeature/module4-tests[m[33m)[m Add README file
+[33m896e9c2[m Cleanup: remove node_modules
+[33m4a35f58[m WDIO project with Mocha + Chai
