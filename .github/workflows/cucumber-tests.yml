@@ -13,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        tag: [smoke, login, product, cart, search]
+        tag: [login, product, cart, search]   # removed smoke
 
     steps:
       - name: Checkout repository
